@@ -190,19 +190,20 @@
 
     /* Who */
     .who-grid {
-      display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: 4.5rem;
-      align-items: center;
+      display: flex;
+      align-items: stretch;
+      gap: 2.5rem;
+      max-width: 860px;
     }
     .who-photo {
-      width: 260px;
-      height: 340px;
-      object-fit: contain;
-      object-position: center;
-      border-radius: 0.875rem;
+      flex-shrink: 0;
+      width: 72px;
+      border-radius: 0.5rem;
+      object-fit: cover;
+      object-position: top center;
       display: block;
-      filter: grayscale(12%);
+      filter: grayscale(15%);
+      min-height: 220px;
     }
     .who-body {
       font-size: 1rem;
@@ -487,8 +488,8 @@
       .section-wrap { padding: 4rem 1.25rem; }
       .contact-wrap { padding: 4rem 1.25rem 6rem; }
       .strip { padding: 1.125rem 1.25rem; }
-      .who-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .who-photo { width: 180px; height: 230px; }
+      .who-grid { gap: 1.5rem; }
+      .who-photo { width: 56px; min-height: 160px; }
       .fix-grid { grid-template-columns: 1fr; }
       .proof-grid { grid-template-columns: 1fr; }
       .quotes-grid { grid-template-columns: 1fr; }
@@ -526,7 +527,7 @@
       <h2 class="section-heading">I build what gets work out of the door</h2>
       <p class="who-body">Not strategy decks. The actual delivery engine. The capability, the structure, the operating rhythm that lets organisations grow without falling apart and change without losing confidence.</p>
       <p class="who-body">I've led technology and business Transformations simultaneously and separately. The common thread isn't the type of change. It's that I keep the people in the room, hold the outcome in view, and make sure what gets built actually gets used.</p>
-      <p class="who-body">I've built it from scratch more than once. Held it together through 45–75% annual growth at Globant. Recovered programmes at MPS that had been stalling for years. What they had in common: I owned the outcome, not just the plan.</p>
+      <p class="who-body">I've built divisions and departments from scratch more than once. Held it together through 45–75% annual growth at Globant. Recovered programmes at MPS that had been stalling for years. What they had in common: I owned the outcome, not just the plan.</p>
       <p class="who-body"><strong>Board and ExCo level. Permanent, Interim, or Fractional. Any sector. Available now.</strong></p>
     </div>
   </div>

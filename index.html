@@ -71,13 +71,6 @@
       letter-spacing: 0.02em;
       color: var(--white);
     }
-    .nav-linkedin {
-      font-size: 0.8125rem;
-      color: var(--text-dim);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-linkedin:hover { color: var(--teal); }
     .nav-cta {
       font-size: 0.8125rem;
       font-weight: 500;
@@ -89,6 +82,81 @@
       transition: background 0.2s, color 0.2s;
     }
     .nav-cta:hover { background: var(--teal); color: var(--black); }
+
+    /* Nav section links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-link {
+      font-size: 0.8125rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--text-bright); }
+    .nav-link.active { color: var(--teal); }
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0; right: 0;
+      height: 1.5px;
+      background: var(--teal);
+      border-radius: 2px;
+    }
+
+    /* Hamburger */
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      margin-left: 0.75rem;
+    }
+    .nav-burger span {
+      display: block;
+      width: 20px;
+      height: 1.5px;
+      background: var(--text-mid);
+      border-radius: 2px;
+      transition: transform 0.22s ease, opacity 0.22s ease;
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* Mobile dropdown menu */
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      top: 60px;
+      left: 0; right: 0;
+      background: rgba(8,8,8,0.98);
+      border-bottom: 1px solid var(--border-subtle);
+      backdrop-filter: blur(14px);
+      z-index: 99;
+      flex-direction: column;
+      padding: 0.5rem 0;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile-link {
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      color: var(--text-mid);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: color 0.15s;
+    }
+    .nav-mobile-link:hover { color: var(--white); }
+    .nav-mobile-link.active { color: var(--teal); }
+    .nav-mobile-link:last-child { border-bottom: none; }
 
     /* Hero */
     .hero {
@@ -481,7 +549,8 @@
     /* Mobile */
     @media (max-width: 680px) {
       nav { padding: 1rem 1.25rem; }
-      .nav-linkedin { display: none; }
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
       .hero { padding: 7rem 1.25rem 4rem; }
       .section-wrap { padding: 4rem 1.25rem; }
       .contact-wrap { padding: 4rem 1.25rem 6rem; }
@@ -499,10 +568,24 @@
 <nav>
   <div class="nav-left">
     <span class="nav-name">Carl Robinson</span>
-    <a href="https://uk.linkedin.com/in/carl-robinson-221a45" class="nav-linkedin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  </div>
+  <div class="nav-links">
+    <a href="#about" class="nav-link">Who I am</a>
+    <a href="#fix" class="nav-link">What I fix</a>
+    <a href="#proof" class="nav-link">Numbers</a>
+    <a href="https://uk.linkedin.com/in/carl-robinson-221a45" class="nav-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
   </div>
   <a href="#contact" class="nav-cta">Let's talk</a>
+  <button class="nav-burger" id="navBurger" aria-label="Open navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="#about" class="nav-mobile-link">Who I am</a>
+  <a href="#fix" class="nav-mobile-link">What I fix</a>
+  <a href="#proof" class="nav-mobile-link">Numbers</a>
+  <a href="https://uk.linkedin.com/in/carl-robinson-221a45" class="nav-mobile-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+</div>
 
 <!-- Hero -->
 <section class="hero">
@@ -751,6 +834,39 @@
       card.setAttribute('aria-expanded', 'true');
     }
   }
+
+  // Scrollspy — highlight active section in nav
+  const navSections = ['about', 'fix', 'proof', 'contact'];
+  function updateActiveNav() {
+    const scrollY = window.scrollY + 80;
+    let active = '';
+    navSections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.offsetTop <= scrollY) active = id;
+    });
+    document.querySelectorAll('.nav-link, .nav-mobile-link').forEach(a => {
+      a.classList.remove('active');
+      if (active && a.getAttribute('href') === '#' + active) a.classList.add('active');
+    });
+  }
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  updateActiveNav();
+
+  // Hamburger menu
+  const burger = document.getElementById('navBurger');
+  const mobileMenu = document.getElementById('navMobile');
+  burger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', String(open));
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+  });
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {

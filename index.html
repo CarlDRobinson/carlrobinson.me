@@ -524,9 +524,16 @@
       border: 1px solid var(--border-card);
       padding: 0.75rem 1.625rem;
       border-radius: 2rem;
-      transition: border-color 0.2s, color 0.2s;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
     }
     .contact-link:hover { border-color: var(--teal); color: var(--teal); }
+    .contact-link-primary {
+      background: var(--teal);
+      color: var(--black);
+      border-color: var(--teal);
+      font-weight: 600;
+    }
+    .contact-link-primary:hover { background: var(--teal-dark); border-color: var(--teal-dark); color: var(--black); }
 
     /* Footer */
     footer {
@@ -810,8 +817,8 @@
   -->
 
   <div class="contact-links reveal">
-    <a href="https://calendly.com/carl-carlrobinson" class="contact-link" target="_blank" rel="noopener noreferrer" style="border-color: var(--teal); color: var(--teal);">Book a call</a>
-    <a href="mailto:carl.david.robinson@gmail.com" class="contact-link">carl.david.robinson@gmail.com</a>
+    <a href="https://calendly.com/carl-carlrobinson" class="contact-link contact-link-primary" target="_blank" rel="noopener noreferrer">Book a call</a>
+    <a href="https://mail.google.com/mail/?view=cm&to=carl.david.robinson@gmail.com" class="contact-link" target="_blank" rel="noopener noreferrer">carl.david.robinson@gmail.com</a>
     <a href="https://uk.linkedin.com/in/carl-robinson-221a45" class="contact-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     <a href="tel:+447966502095" class="contact-link">+44 (0)7966 502095</a>
   </div>

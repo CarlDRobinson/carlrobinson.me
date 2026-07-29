@@ -573,7 +573,7 @@
     <a href="#about" class="nav-link">Who I am</a>
     <a href="#fix" class="nav-link">What I fix</a>
     <a href="#proof" class="nav-link">Numbers</a>
-    <a href="https://uk.linkedin.com/in/carl-robinson-221a45" class="nav-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="#contact" class="nav-link">Contact</a>
   </div>
   <a href="#contact" class="nav-cta">Let's talk</a>
   <button class="nav-burger" id="navBurger" aria-label="Open navigation" aria-expanded="false">
@@ -584,7 +584,7 @@
   <a href="#about" class="nav-mobile-link">Who I am</a>
   <a href="#fix" class="nav-mobile-link">What I fix</a>
   <a href="#proof" class="nav-mobile-link">Numbers</a>
-  <a href="https://uk.linkedin.com/in/carl-robinson-221a45" class="nav-mobile-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  <a href="#contact" class="nav-mobile-link">Contact</a>
 </div>
 
 <!-- Hero -->
@@ -838,12 +838,15 @@
   // Scrollspy — highlight active section in nav
   const navSections = ['about', 'fix', 'proof', 'contact'];
   function updateActiveNav() {
+    const atBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 60;
     const scrollY = window.scrollY + 80;
-    let active = '';
-    navSections.forEach(id => {
-      const el = document.getElementById(id);
-      if (el && el.offsetTop <= scrollY) active = id;
-    });
+    let active = atBottom ? 'contact' : '';
+    if (!atBottom) {
+      navSections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= scrollY) active = id;
+      });
+    }
     document.querySelectorAll('.nav-link, .nav-mobile-link').forEach(a => {
       a.classList.remove('active');
       if (active && a.getAttribute('href') === '#' + active) a.classList.add('active');

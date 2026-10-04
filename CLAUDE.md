@@ -53,26 +53,62 @@ All edits to the site (index.html) must be made directly in this folder. After a
 
 Do NOT create copies of index.html elsewhere.
 
-## Current Site State (as of 6 August 2026)
+## Current Site State (as of 7 August 2026)
 
 - Sections: Who I am · What I fix · Numbers · Contact
 - Sticky nav with scrollspy active states and hamburger menu on mobile (implemented session ending 5 Aug)
 - Nav links: Who I am · What I fix · Numbers · Contact
-- CTA pill: "Let's talk" (links to #contact — not a nav item)
-- Schema.org Person structured data in head
-- Google Search Console verified, sitemap.xml present
+- CTA pill: "Let's talk" (links to Calendly — not a nav item)
+- Schema.org Person structured data in head — extended 7 Aug (see below)
+- Google Search Console verified, sitemap.xml present and updated 7 Aug
+- robots.txt created 7 Aug — points crawlers to sitemap
 - Inter font via Google Fonts
 - Colour: teal accent #00C9A7, dark background
-- **PENDING:** Sticky nav changes committed but not yet pushed via GitHub Desktop — Carl to push
+- **PENDING:** All changes from 7 Aug committed but NOT yet pushed via GitHub Desktop — Carl to push
 
-## Active Work Items (6 August 2026)
+## SEO Changes Made — 7 August 2026
 
-### SEO and search visibility — raised 6 Aug, not yet started
-Carl raised improving SEO, search engine visibility, and site traction on 6 Aug 2026. Work not yet scoped or started. Topics to cover when this session begins:
-- Technical SEO audit (meta descriptions, title tags, structured data, page speed)
-- Content strategy for search visibility
-- Backlink and citation opportunities
-- Google Search Console review
-- Any on-page improvements to copy or structure
+All changes made to index.html on 7 Aug 2026. Carl to commit and push via GitHub Desktop, then request re-indexing in Google Search Console.
 
-This is a new work stream. Do not begin without re-reading the most recent handover and confirming current site state first.
+### Done
+- **Title tag** updated: now includes "Interim", "UK", and both CDO and CTrO as keywords
+- **Meta description** rewritten: keyword-forward, opens with "Interim CDO and Chief Transformation Officer, available now"
+- **OG tags** (og:title, og:description) updated to match new title/description
+- **og:image** added: carlrobinson.me/carl-fulllength.png — enables rich previews when shared on LinkedIn and social
+- **Twitter card tags** added: summary_large_image, title, description, image
+- **robots meta** added: `index, follow` — explicit crawl instruction
+- **Canonical URL** added: `<link rel="canonical" href="https://carlrobinson.me">`
+- **Schema.org Person** extended with: description, knowsAbout array (9 terms), hasOccupation with UK occupationLocation, PostalAddress with GB country code, second LinkedIn sameAs URL
+- **Photo alt text** updated: now includes role and "United Kingdom" for geographic signal
+- **Available strip** copy updated: "UK-based" added naturally between "Available now" and "Permanent, Interim, or Fractional"
+- **sitemap.xml** lastmod updated to 2026-08-07
+- **robots.txt** created — points to sitemap
+
+### Still to do (next website session)
+- Google Search Console: review Queries report for current impressions/clicks baseline, then request re-indexing after commit/push
+- Backlink audit: verify LinkedIn profile URL matches sameAs in schema, check professional body listings (APM, IoD) for carlrobinson.me reference
+- Content strategy: decision on whether to add a /thinking or /articles section for long-tail keyword targeting
+- Consider: page speed check (Lighthouse), Core Web Vitals in Search Console
+
+## Keyword Strategy — Confirmed (7 August 2026)
+
+Ranking for generic terms ("transformation", "delivery") against FTSE 100 firms and the Big 4 is not achievable. The correct targets are long-tail, specific terms used by recruiters and hiring managers looking for someone at Carl's level.
+
+### Tier 1 — targets worth building toward
+- interim CDO UK
+- interim chief transformation officer UK
+- interim chief delivery officer UK
+- CDO CTrO hire UK
+- chief delivery officer consultant UK
+- transformation director available UK
+
+### Carl already likely ranks for (or close to)
+- Carl Robinson CDO
+- Carl Robinson transformation
+- Carl Robinson Globant
+- carlrobinson.me
+
+### Medium-term (content-dependent)
+- financial services transformation leader UK
+- independent CDO consultant UK
+- programme delivery director hire
